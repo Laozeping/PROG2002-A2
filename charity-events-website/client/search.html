@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Events - Hope Foundation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+   <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <h2>Hope Foundation</h2>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="search.html" class="nav-link active">Search Events</a>
+                <!-- 注意：在相应页面设置 active 类 -->
+            </li>
+            <!-- 新增 Register 按钮 -->
+            <li class="nav-item">
+                <button id="nav-register-btn" class="nav-register-btn">Register</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <main class="container">
+        <h1>Find Charity Events</h1>
+        
+        <!-- 搜索表单 -->
+        <section class="search-form-section">
+            <form id="search-form" class="search-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="date">Event Date:</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Sydney, Melbourne">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Event Category:</label>
+                        <select id="category" name="category">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Search Events</button>
+                    <button type="button" id="clear-filters" class="btn btn-secondary">Clear Filters</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 搜索结果 -->
+        <section class="search-results">
+            <h2>Search Results</h2>
+            <div id="results-loading" class="loading" style="display: none;">Searching events...</div>
+            <div id="results-container" class="events-grid"></div>
+            <div id="no-results" class="no-results" style="display: none;">
+                No events found matching your criteria.
+            </div>
+            <div id="results-error" class="error-message" style="display: none;">
+                Failed to search events. Please try again.
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

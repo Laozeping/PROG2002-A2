@@ -1,0 +1,806 @@
+/* 茶色暖色系 - 完整CSS样式文件 */
+:root {
+    /* 茶色主题调色板 */
+    --tea-primary: #8B7355;
+    --tea-secondary: #A68A64;
+    --tea-accent: #D4B996;
+    --tea-light: #F5F1E8;
+    --tea-dark: #5D4037;
+    --tea-brown: #795548;
+    --tea-gold: #C8A951;
+    --tea-cream: #FFF8E1;
+    --tea-paper: #FDF6E3;
+    
+    /* 自然色调 */
+    --leaf-green: #7CB342;
+    --blossom-pink: #F8BBD0;
+    --earth-brown: #6D4C41;
+    
+    /* 文字色 */
+    --text-dark: #3E2723;
+    --text-medium: #5D4037;
+    --text-light: #8D6E63;
+    
+    /* 阴影 */
+    --shadow-soft: 0 8px 32px rgba(139, 115, 85, 0.1);
+    --shadow-medium: 0 12px 40px rgba(93, 64, 55, 0.15);
+    --shadow-strong: 0 20px 60px rgba(93, 64, 55, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, var(--tea-paper) 0%, var(--tea-light) 100%);
+    color: var(--text-dark);
+    line-height: 1.7;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 背景纹理效果 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(212, 185, 150, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 115, 85, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(198, 169, 81, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* === 通用组件样式 === */
+
+/* 导航栏 */
+.navbar {
+    background: rgba(255, 248, 225, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--tea-accent);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-logo h2 {
+    background: linear-gradient(135deg, var(--tea-dark), var(--tea-primary));
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    color: transparent; /* 标准属性回退 */
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-style: italic;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-medium);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.4s ease;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--tea-dark);
+    background: rgba(212, 185, 150, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: var(--tea-dark);
+    background: var(--tea-accent);
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+/* 导航栏注册按钮样式 */
+.nav-register-btn {
+    background: linear-gradient(135deg, var(--tea-primary), var(--tea-brown));
+    color: var(--tea-cream);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    font-family: inherit;
+}
+
+.nav-register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+    background: linear-gradient(135deg, var(--tea-brown), var(--tea-dark));
+}
+
+/* 按钮 */
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: all 0.4s ease;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--tea-primary), var(--tea-brown));
+    color: var(--tea-cream);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(139, 115, 85, 0.4);
+}
+
+.btn-secondary {
+    background: var(--tea-light);
+    color: var(--text-dark);
+    border: 2px solid var(--tea-accent);
+}
+
+.btn-secondary:hover {
+    background: var(--tea-accent);
+    transform: translateY(-3px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--leaf-green), #66BB6A);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(124, 179, 66, 0.4);
+}
+
+/* 卡片 */
+.event-card {
+    background: var(--tea-cream);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--tea-accent);
+    transition: all 0.4s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+}
+
+.event-image {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--tea-primary) 0%, var(--tea-secondary) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-image::before {
+    content: attr(data-category);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(255, 248, 225, 0.95);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--tea-dark);
+    z-index: 2;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.1);
+}
+
+.event-content {
+    padding: 2rem;
+}
+
+.event-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.event-description {
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* 进度条 */
+.event-progress {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    background: var(--tea-light);
+    border-radius: 10px;
+    height: 10px;
+    margin-bottom: 0.7rem;
+    overflow: hidden;
+    border: 1px solid var(--tea-accent);
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--leaf-green), var(--tea-gold));
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: right;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.ticket-price-badge {
+    background: linear-gradient(135deg, var(--tea-gold), var(--tea-primary));
+    color: var(--tea-cream);
+    padding: 0.7rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(198, 169, 81, 0.3);
+}
+
+/* 模态框 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--tea-cream);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+/* === 首页样式 === */
+
+/* 英雄区域 */
+.hero {
+    background: linear-gradient(135deg, var(--tea-primary) 0%, var(--tea-brown) 100%);
+    color: var(--tea-cream);
+    padding: 6rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 40px 40px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 248, 225, 0.05) 0%, transparent 50%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* 组织信息 */
+.organisation-info {
+    padding: 5rem 0;
+    background: var(--tea-light);
+}
+
+.organisation-info h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.organisation-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tea-primary), var(--tea-gold));
+    border-radius: 2px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.info-card {
+    background: var(--tea-cream);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--tea-accent);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--tea-primary), var(--tea-gold));
+}
+
+.info-card:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: var(--shadow-medium);
+}
+
+.info-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.info-card p {
+    color: var(--text-medium);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* 活动部分 */
+.events-section {
+    padding: 5rem 0;
+    background: var(--tea-paper);
+}
+
+.events-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.events-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tea-primary), var(--tea-gold));
+    border-radius: 2px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2.5rem;
+}
+
+/* === 搜索页面样式 === */
+
+.search-page {
+    padding: 3rem 0;
+    background: var(--tea-light);
+    min-height: 80vh;
+}
+
+.search-page h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.search-page h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--tea-primary), var(--tea-gold));
+    border-radius: 2px;
+}
+
+/* 搜索表单 */
+.search-form-section {
+    background: var(--tea-cream);
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 3rem;
+    border: 2px solid var(--tea-accent);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--tea-accent);
+    border-radius: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--tea-light);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--tea-primary);
+    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+    background: var(--tea-cream);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 搜索结果 */
+.search-results h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* === 活动详情页面样式 === */
+
+.event-detail-page {
+    padding: 3rem 0;
+    background: var(--tea-light);
+    min-height: 80vh;
+}
+
+.event-detail-header {
+    background: var(--tea-cream);
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-medium);
+    margin-bottom: 3rem;
+    border: 2px solid var(--tea-accent);
+}
+
+.event-detail-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.event-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-medium);
+    font-size: 1.1rem;
+}
+
+.event-detail-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.event-main-info {
+    background: var(--tea-cream);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--tea-accent);
+}
+
+.event-sidebar {
+    background: var(--tea-cream);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--tea-accent);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.ticket-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--tea-light), var(--tea-accent));
+    border-radius: 20px;
+}
+
+.ticket-price {
+    font-size: 2.8rem;
+    color: var(--tea-primary);
+    font-weight: 800;
+    margin: 1rem 0;
+}
+
+/* === 工具类 === */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* === 响应式设计 === */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .nav-register-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .event-detail-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-actions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .btn {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .search-form-section {
+        padding: 2rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-detail-header,
+    .event-main-info,
+    .event-sidebar {
+        padding: 1.5rem;
+    }
+    
+    .nav-register-btn {
+        padding: 1rem;
+    }
+}
